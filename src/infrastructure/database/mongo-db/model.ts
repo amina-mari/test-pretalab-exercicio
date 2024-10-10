@@ -1,7 +1,7 @@
-// vai definir as regras da criacao de um livro, vira uma classe pra ser instanciada 
+// vai definir as regras da criacao de um livro, vira uma classe pra ser instanciada
 //e cria a regra de como a collection la no MongoDB
 
-import { model, Schema } from 'mongoose'
+import { model, Schema } from "mongoose";
 
 //-> Um livro é um Document
 //-> Uma coleção de livros - collection
@@ -11,44 +11,48 @@ import { model, Schema } from 'mongoose'
 const BookSchema = new Schema({
   title: {
     type: String,
-    require: true
+    require: true,
   },
   author: {
     type: String,
-    require: true
+    require: true,
   },
   isbn: {
     type: String,
-    require: true
+    require: true,
   },
   publisher: {
     type: String,
-    require: true
+    require: true,
   },
   category: {
     type: String,
-    require: true
+    require: true,
   },
   cover: {
     type: String,
-    require: false
+    require: false,
   },
   status: {
     type: String,
-    require: true
+    require: true,
   },
   createdAt: {
     type: String,
-    require: true
-  }
-})
+    require: true,
+  },
+});
 
 const UserSchema = new Schema({
   email: {
     type: String,
-    require: true
-  }
-})
+    require: true,
+  },
+  password: {
+    type: String,
+    require: true,
+  },
+});
 
-export const BookModel = model('books', BookSchema)
-export const UserModel = model('users', UserSchema)
+export const BookModel = model("books", BookSchema);
+export const UserModel = model("users", UserSchema);

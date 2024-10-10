@@ -1,18 +1,15 @@
-import { randomUUID } from "crypto";
+import { User } from "../../../domain/user";
 import { UserRepository } from "../../repositories/user-repository";
 
 export class CreateUserUseCase {
-    constructor(
-        private userRepository: UserRepository
-    ) { }
+  constructor(private userRepository: UserRepository) {}
 
-    async execute(email: string) {
-        const user = {
-            id: randomUUID(),
-            email
-        };
+  async execute(userParams: User): Promise<User> {
+    const user = {
+      ...userParams,
+    } as User;
 
-        await this.userRepository.save(user);
-        return user;
-    }
+    await this.userRepository.save(user);
+    return user;
+  }
 }

@@ -7,8 +7,5 @@ export interface Book {
   category: string;
   cover?: string;
   createdAt: string;
-  status: 'read' | 'unread' | 'donated';
+  status: "read" | "unread" | "donated";
 }
-
-
-

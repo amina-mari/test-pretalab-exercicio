@@ -1,23 +1,20 @@
-import { Book } from '../../domain/book';
-import { BookRepository } from '../repositories/book-repository';
+import { Book } from "../../domain/book";
+import { BookRepository } from "../repositories/book-repository";
 
 export class CreateBookUseCase {
   //seu codigo aqui
-  constructor(
-    private bookRepository: BookRepository,
-  ){}
+  constructor(private bookRepository: BookRepository) {}
 
-  execute(bookParams: Partial<Book>): Book {
+  async execute(bookParams: Book): Promise<Book> {
     const book = {
-      createdAt: this.getDate(),
-      ...bookParams
+      ...bookParams,
     } as Book;
 
-    this.bookRepository.save(book);
+    await this.bookRepository.save(book);
     return book;
-  } 
+  }
 
   private getDate() {
-    return new Date().toLocaleDateString('PT-br');
+    return new Date().toLocaleDateString("PT-br");
   }
 }
